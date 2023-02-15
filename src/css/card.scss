@@ -41,11 +41,11 @@
     font-size: 3rem;
   }
   
-  #pokemon-name {
+  .pokemon-name {
     font-size: 3rem;
   }
   
-  #type {
+  .type {
     font-size: 2rem;
     opacity: 0.75
   }
@@ -57,7 +57,7 @@
   
   .grass {
     background: linear-gradient(180deg, rgba(121, 199, 76, 0.479) 50%, rgba(255,255,255,1) 100%);
-    color: rgb(55, 150, 0)
+    color: rgb(74, 201, 0)
   }
   
   .grass-text {

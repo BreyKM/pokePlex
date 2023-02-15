@@ -1,0 +1,25 @@
+.nav-container {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 4rem;
+    
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    padding-left: 2rem;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: rgba(255, 0, 0, 0.849);
+    transform: translateY(-0.25rem);
+}

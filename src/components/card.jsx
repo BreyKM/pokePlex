@@ -10,21 +10,15 @@ export default function Card() {
     const name = useSelector((state) => state.pokemonName);
     console.log(name);
     
+    const { data, error, isLoading, isFetching } = useGetPokemonByNameQuery(name);
 
-   
-   
+    console.log(useGetPokemonByNameQuery(name))
 
-    const { data, error, isLoading } = useGetPokemonByNameQuery(name);
+    isLoading && console.log("isLoading");
+    
 
-
-
-
-
-
-
-
-
-
+    
+    
 
     return (
     <div className="card-container">
@@ -37,16 +31,21 @@ export default function Card() {
           
         >
           <div
-            className="card"
+            className={`card ${name == "bulbasaur" ? "grass": data.types[0].type.name}` }
+
             style={{
               width: "490px",
               height: "622px",
               zIndex: "2",
+
             }}
           >
-            <span><div className="card-id">{name == "bulbasaur" ? "#1" : `#${data.id}`}</div><i className="fa fa-info-circle info-circle"></i></span>
+            <span><div className="card-id">{name == "bulbasaur" ? "#1" : `#${data.id}`}</div><div className="modal-info-btn"><i className="fa fa-info-circle info-circle"></i></div></span>
             <span><img className="card-image" src={name == "bulbasaur" ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" : `${data.sprites.other["official-artwork"].front_default}`} /></span>
-            <span>{name == "bulbasaur" ? "bulbasur" : data.name}</span>
+            <span className="pokemon-name">{name == "bulbasaur" ? "bulbasaur" : data.name}</span>
+            
+            
+            
           </div>
         </Tilt>
       </div>
