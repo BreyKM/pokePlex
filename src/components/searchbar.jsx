@@ -26,6 +26,7 @@ export default function Searchbar() {
     return (
         <form className="search-container" onSubmit={handleSubmit}>
         <input
+        required={true}
           id="search-box"
           type="text"
           className="search-box"

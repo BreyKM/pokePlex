@@ -2,19 +2,19 @@ import React from "react";
 import "../css/card.scss";
 import Tilt from "react-parallax-tilt";
 import { useGetPokemonByNameQuery } from "../fromAPI/pokemonApi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import { openModal } from "../slices/modalSlice";
+
 
 
 export default function Card() {
 
+    const dispatch = useDispatch();
+    
     const name = useSelector((state) => state.pokemonName);
-    console.log(name);
     
     const { data, error, isLoading, isFetching } = useGetPokemonByNameQuery(name);
-
-    console.log(useGetPokemonByNameQuery(name))
-
-    isLoading && console.log("isLoading");
     
 
     
@@ -25,8 +25,8 @@ export default function Card() {
         <Tilt
           glareEnable={true}
           glareBorderRadius="8px"
-          glareMaxOpacity={0.2}
-          glareColor="#ffffff"
+          glareMaxOpacity={0.3}
+          glareColor="#fff"
           glarePosition="all"
           
         >
@@ -40,8 +40,10 @@ export default function Card() {
 
             }}
           >
-            <span><div className="card-id">{name == "bulbasaur" ? "#1" : `#${data.id}`}</div><div className="modal-info-btn"><i className="fa fa-info-circle info-circle"></i></div></span>
-            <span><img className="card-image" src={name == "bulbasaur" ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" : `${data.sprites.other["official-artwork"].front_default}`} /></span>
+            <span><div className="card-id">{name == "bulbasaur" ? "#1" : `#${data.id}`}</div><div className="modal-info-btn"><i className="fa fa-info-circle info-circle" onClick={() => {
+                dispatch(openModal());
+            }}></i></div></span>
+            <span><img className={"card-image"} src={name == "bulbasaur" ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" : `${data.sprites.other["official-artwork"].front_default}`} /></span>
             <span className="pokemon-name">{name == "bulbasaur" ? "bulbasaur" : data.name}</span>
             
             
@@ -52,3 +54,5 @@ export default function Card() {
 )
     
 }
+
+
