@@ -2,10 +2,13 @@
   "name": "pokeplex",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://breykm.github.io/pokePlex/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -23,6 +26,7 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react-swc": "^3.0.0",
+    "gh-pages": "^6.3.0",
     "sass": "^1.58.0",
     "vite": "^4.1.0"
   }
